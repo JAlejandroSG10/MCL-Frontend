@@ -13,6 +13,22 @@ const _nav = [
     name: 'Dashboard',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />
+  },{
+    component: CNavTitle,
+    name: 'Management'
+  },
+  {
+    component: CNavGroup,
+    name: 'Supermarket',
+    to: '/supermarket',
+    icon: <CIcon icon={cilFastfood} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Supermarket',
+        to: '/supermarkets/supermarket'
+      }
+    ]
   },
   {
     component: CNavItem,
