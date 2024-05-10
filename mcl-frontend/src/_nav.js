@@ -15,23 +15,6 @@ const _nav = [
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />
   },
   {
-    component: CNavTitle,
-    name: 'Management'
-  },
-  {
-    component: CNavGroup,
-    name: 'Restaurants',
-    to:'/restaurants',
-    icon: <CIcon icon={cilFastfood} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Restaurant',
-        to:'/restaurants/restaurant'
-      }
-    ]
-  },
-  {
     component: CNavItem,
     name: 'Docs',
     href: 'https://coreui.io/react/docs/templates/installation/',
