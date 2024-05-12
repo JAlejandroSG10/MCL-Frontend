@@ -32,13 +32,13 @@ const Supermarket = () => {
     navigate('/supermarkets/SupermarketForm');
   }
 
-  function handleEdit(supermarketNit){
-    navigate(`/supermarkets/SupermarketEditForm`);
+  function handleEdit(supermarketId){
+    navigate(`/supermarkets/SupermarketEditForm/${supermarketId}`);
   }
 
-  const handleDisable = async(supermarketNit) =>{
+  const handleDisable = async(supermarketId) =>{
     try{
-      var url = "http://localhost:1337/api/disablesupermarket/"+supermarketNit;
+      var url = "http://localhost:1337/api/disablesupermarket/"+supermarketId;
       const response = await Axios.put(url);
       window.location.reload();
     }
@@ -72,32 +72,39 @@ const Supermarket = () => {
     },
     {
       title: 'Options',
+      render:(supermarketId) =>(
+        <div>
+          <CButton color='primary' onClick={() => handleEdit(supermarketId)}>Edit</CButton>
+          <CButton color='danger' onClick={() => handleDisable(supermarketId)}>Delete</CButton>
+        </div>
+      ),
     }
   ]
   return(
     <div>
-      <CButton onClick={handleCreateSupermarkets}> New Supermarket </CButton>
-      <CTable>
-        <CTable>
-          <CTableHead>
-            <CTableRow>
-              {columns.map((column, index) => (
-                <CTableHeaderCell key = {index}>{column.title}</CTableHeaderCell>
-              ))}
-            </CTableRow>
-          </CTableHead>
-          <CTableBody>
-              {supermarketData.map((supermarket, index) => (
-                <CTableRow key = {index}>
-                  {columns.map((column, columnIndex) => (
-                    <CTableDataCell key={columnIndex}> {supermarket[column.dataIndex]} </CTableDataCell>
-                  ))} 
-                </CTableRow>
-              ))}
-          </CTableBody>
-        </CTable>
-      </CTable>
-    </div>
+    <CButton onClick={handleCreateSupermarkets}> New Supermarket </CButton>
+    <CTable>
+      <CTableHead>
+        <CTableRow>
+          {columns.map((column, index) => (
+            <CTableHeaderCell key= {index}>{column.title}</CTableHeaderCell>
+          ))}
+        </CTableRow>
+      </CTableHead>
+      <CTableBody>
+        {supermarketData.map((supermarket, index) => (
+          <CTableRow key={index}>
+            {columns.map((column, columnIndex) => (
+              <CTableDataCell key={columnIndex}> 
+                {column.title === 'Options' ? column.render(supermarket.supermarketId) : supermarket[column.dataIndex]}
+              </CTableDataCell>
+            ))}
+          </CTableRow>
+        ))}
+        
+      </CTableBody>
+    </CTable>
+  </div>
   )
 }
 export default Supermarket

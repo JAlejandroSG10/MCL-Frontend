@@ -12,7 +12,7 @@ import {
 const SupermarketEditForm = () => {
 
     const navigate = useNavigate();
-    const { supermarketNit } = useParams();
+    const { supermarketId } = useParams();
 
     const [supermarketData, setSupermarketData] = useState({
         supermarketName: '',
@@ -34,8 +34,8 @@ const SupermarketEditForm = () => {
               url: 'http://localhost:1337/api/listsupermarket'
             });
             const lstSupermarkets = Object.keys(response.data).map(i=> response.data[i]);
-            setRestaurantData(lstSupermarkets.flat());
-        }
+            setSupermarketData(lstSupermarkets.flat());
+          }
 
         const getDepartments = async () => {
             const response = await Axios({url: 'http://localhost:1337/api/listdepartments'});
@@ -78,10 +78,12 @@ const SupermarketEditForm = () => {
         });
     }
 
-    const handleSubmit = async() => {
+    const handleSubmit = async(event)=>{
+        event.preventDefault();
         try{
-            const response = await Axios.post(`http://localhost:1337/api/updatesupermarket/${supermarketNit}`, supermarketData);
+            const response = await Axios.put(`http://localhost:1337/api/updatesupermarket/${supermarketId}`, supermarketData);
             console.log(response.data);
+            navigate('/supermarkets/supermarket');
         }
         catch (e){
             console.log(e);

@@ -13,7 +13,7 @@ const routes = [
   { path: '/supermarkets', name: 'Supermarkets', exact: true},
   { path: '/supermarkets/supermarket', name: 'Supermarket', element: Supermarket},
   { path: '/supermarkets/supermarketForm', name: 'SupermarketForm', element: SupermarketForm},
-  { path: '/supermarkets/supermarketEditForm', name: 'SupermarketEditForm', element: SupermarketEditForm}
+  { path: '/supermarkets/supermarketEditForm/:supermarketId', name: 'SupermarketEditForm', element: SupermarketEditForm}
 ]
 
 export default routes
