@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
-
 import {
     CForm,
     CCol,
@@ -10,9 +9,10 @@ import {
     CButton
 } from '@coreui/react'
 
-const SupermarketForm = () => {
+const SupermarketEditForm = () => {
 
     const navigate = useNavigate();
+    const { supermarketNit } = useParams();
 
     const [supermarketData, setSupermarketData] = useState({
         supermarketName: '',
@@ -29,6 +29,13 @@ const SupermarketForm = () => {
    
 
     useEffect(() =>{
+        const getSupermarkets = async() =>{
+            const response = await Axios({
+              url: 'http://localhost:1337/api/listsupermarket'
+            });
+            const lstSupermarkets = Object.keys(response.data).map(i=> response.data[i]);
+            setRestaurantData(lstSupermarkets.flat());
+        }
 
         const getDepartments = async () => {
             const response = await Axios({url: 'http://localhost:1337/api/listdepartments'});
@@ -41,7 +48,7 @@ const SupermarketForm = () => {
             const lstCities = Object.keys(response.data).map(i => response.data[i]);
             setCities(lstCities.flat());
         }
-        
+        getSupermarkets();
         getDepartments();
         if(selectedDepartment !== "")
             getCities(selectedDepartment);
@@ -73,7 +80,7 @@ const SupermarketForm = () => {
 
     const handleSubmit = async() => {
         try{
-            const response = await Axios.post('http://localhost:1337/api/createsupermarket', supermarketData);
+            const response = await Axios.post(`http://localhost:1337/api/updatesupermarket/${supermarketNit}`, supermarketData);
             console.log(response.data);
         }
         catch (e){
@@ -125,4 +132,4 @@ const SupermarketForm = () => {
     )
 }
 
-export default SupermarketForm
+export default SupermarketEditForm;

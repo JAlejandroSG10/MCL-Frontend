@@ -14,7 +14,7 @@ import {
 const Supermarket = () => {
 
   const navigate = useNavigate();
-  const [SupermarketData, setSupermarketData] = useState([]);
+  const [supermarketData, setSupermarketData] = useState([]);
 
   useEffect(()=>{
     const getSupermarkets = async() =>{
@@ -33,7 +33,7 @@ const Supermarket = () => {
   }
 
   function handleEdit(supermarketNit){
-    //navigate(`/restaurants/RestaurantEditForm`);
+    navigate(`/supermarkets/SupermarketEditForm`);
   }
 
   const handleDisable = async(supermarketNit) =>{
@@ -67,6 +67,10 @@ const Supermarket = () => {
       dataIndex: 'supermarketNit'
     },
     {
+      title: 'City',
+      dataIndex: 'cityId'
+    },
+    {
       title: 'Options',
     }
   ]
@@ -83,7 +87,7 @@ const Supermarket = () => {
             </CTableRow>
           </CTableHead>
           <CTableBody>
-              {SupermarketData.map((supermarket, index) => (
+              {supermarketData.map((supermarket, index) => (
                 <CTableRow key = {index}>
                   {columns.map((column, columnIndex) => (
                     <CTableDataCell key={columnIndex}> {supermarket[column.dataIndex]} </CTableDataCell>
