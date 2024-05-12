@@ -17,9 +17,9 @@ const Cliente = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    const getClientes = async(clientId) =>{
+    const getClientes = async() =>{
       const response = await Axios({
-        url: `http://localhost:1337/api/listCliente:/${clientId}`
+        url: 'http://localhost:1337/api/listcliente'
       });
       const lstClientes = Object.keys(response.data).map(i=> response.data[i]);
       //console.log(lstClientes);
@@ -30,16 +30,16 @@ const Cliente = () => {
   },[]);
 
   function handleCreateCliente (event){
-    navigate('/Clientes/ClienteForm');
+    navigate('/clientes/clienteForm');
   }
 
-  function handleEdit (ClienteId){
-    navigate('/Clientes/ClienteForm');
+  function handleEdit (clientId){
+    navigate(`/clientes/clienteEditForm/${clientId}`);
   }
 
-  const handleDisable = async(ClientId) =>{
+  const handleDisable = async(clientId) =>{
     try{
-      var url = "http://localhost:1337/api/disableCliente/"+ClientId;
+      var url = "http://localhost:1337/api/disablecliente/"+clientId;
       const response = await Axios.put(url);
       window.location.reload();
     }catch(e){
@@ -51,11 +51,25 @@ const Cliente = () => {
 
   const columns = [
     {
-      title: 'Ide',
-      dataIndex: 'clientId'
-    },{
-      title:'Name',
-      dataIndex: 'clientName'
+      title: 'Id',
+      dataIndex: 'clientId'      
+    },
+    {
+      title: 'First Name',
+      dataIndex: 'clientFirstName'
+    },
+    {
+      title:'Last Name',
+      dataIndex: 'clientLastName'
+    },
+    {
+      title:'Options',
+      render:(clientId) =>(
+        <div>
+          <CButton color='primary' onClick={() => handleEdit(clientId)}>Edit</CButton>
+          <CButton color='danger' onClick={() => handleDisable(clientId)}>Delete</CButton>
+        </div>
+      ),
     }
   ]
 
@@ -74,12 +88,12 @@ const Cliente = () => {
           {ClienteData.map((Cliente, index) => (
             <CTableRow key={index}>
               {columns.map((column, columnIndex) => (
-                <CTableDataCell key={columnIndex}> {Cliente[column.dataIndex]} </CTableDataCell>
-                
+                <CTableDataCell key={columnIndex}> 
+                  {column.title === 'Options' ? column.render(Cliente.clientId) : Cliente[column.dataIndex]} 
+                </CTableDataCell>
               ))}
             </CTableRow>
           ))}
-          <CButton color='primary' onClick={handleUpdate}>Update</CButton>
         </CTableBody>
       </CTable>
     </div>

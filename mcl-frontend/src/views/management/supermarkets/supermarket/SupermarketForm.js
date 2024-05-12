@@ -20,48 +20,6 @@ const SupermarketForm = () => {
         supermarketNit: ''
     });
 
-   
-
-    /*useEffect(() =>{
-        const getRestaurant = async () => {
-            const response = await Axios({url: `http://localhost:1337/api/getrestaurant/${restaurantId}`})
-            const restaurant = response.data.data
-            setRestaurantData(restaurant);
-            
-        }
-        const getDepartments = async () => {
-            const response = await Axios({url: 'http://localhost:1337/api/listdepartments'});
-            const lstDepartments = Object.keys(response.data).map(i=> response.data[i]);
-            setDepartments(lstDepartments.flat());
-        }
-
-        const getCities = async(departmentId) => {
-            const response = await Axios({url: `http://localhost:1337/api/listcities/${departmentId}`});
-            const lstCities = Object.keys(response.data).map(i => response.data[i]);
-            setCities(lstCities.flat());
-        }
-        getRestaurant();
-        getDepartments();
-        if(selectedDepartment !== "")
-            getCities(selectedDepartment);
-
-        
-
-    },[selectedDepartment]);
-
-    function handleSelectDepartments(event){
-        setSelectedDepartment(event.target.value);
-    }
-
-    function handleSelectCities(event){
-        setSelectedCity(event.target.value);
-        setRestaurantData({
-            ...restaurantData,
-            cityId: event.target.value
-        })
-    }
-    */
-
     function handleChange(event){
         const {name, value} = event.target;
         setSupermarketData({

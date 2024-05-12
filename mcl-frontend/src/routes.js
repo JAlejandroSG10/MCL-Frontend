@@ -1,4 +1,3 @@
-import { element, exact } from 'prop-types'
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -13,9 +12,12 @@ const routes = [
   { path: '/supermarkets', name: 'Supermarkets', exact: true},
   { path: '/supermarkets/supermarket', name: 'Supermarket', element: Supermarket},
   { path: '/supermarkets/supermarketForm', name: 'SupermarketForm', element: SupermarketForm},
-  { path: '/clientes', name: 'Clientes', exact: true},
-  { path: '/clientes/cliente', name: 'Cliente', element: cliente},
-  { path: '/clientes/clienteForm', name: 'ClienteForm', element: clienteForm}
+
+  { path: '/clientes', name: 'clientes', exact: true},
+  { path: '/clientes/cliente', name: 'cliente', element: cliente},
+  { path: '/clientes/clienteForm', name: 'clienteForm', element: clienteForm},
+  { path: '/clientes/clienteEditForm/:clientId', name: 'clienteForm', element: clienteForm}
+
 ]
 
 export default routes
