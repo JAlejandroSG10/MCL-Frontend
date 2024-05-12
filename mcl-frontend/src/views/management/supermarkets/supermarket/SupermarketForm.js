@@ -22,13 +22,10 @@ const SupermarketForm = () => {
         cityId: 0
     });
 
-<<<<<<< HEAD
-=======
     const [departments, setDepartments] = useState([]);
     const [selectedDepartment, setSelectedDepartment] = useState('');
     const [cities, setCities] = useState([]);
     const [selectedCity, setSelectedCity] = useState('');
-   
 
     useEffect(() =>{
 
@@ -65,7 +62,6 @@ const SupermarketForm = () => {
     }
  
 
->>>>>>> de1aa48668cd073c31d4a1331cacfc892ead51dc
     function handleChange(event){
         const {name, value} = event.target;
         setSupermarketData({
