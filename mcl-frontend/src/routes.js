@@ -9,7 +9,9 @@ const FacturaForm = React.lazy(() => import('./views/management/facturas/factura
 const FacturaEditForm = React.lazy(() => import('./views/management/facturas/factura/FacturaEditForm'))
 const cliente = React.lazy(()=> import('./views/management/clientes/cliente/Cliente'))
 const clienteForm = React.lazy(()=> import('./views/management/clientes/cliente/ClienteForm'))
-
+const Provider = React.lazy(()=> import('./views/management/providers/provider/Provider'))
+const ProviderForm = React.lazy(()=> import('./views/management/providers/provider/ProviderForm'))
+const ProviderEditForm = React.lazy(()=> import('./views/management/providers/provider/ProviderEditForm'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -25,7 +27,11 @@ const routes = [
   { path: '/clientes', name: 'clientes', exact: true},
   { path: '/clientes/cliente', name: 'cliente', element: cliente},
   { path: '/clientes/clienteForm', name: 'clienteForm', element: clienteForm},
-  { path: '/clientes/clienteEditForm/:clientId', name: 'clienteForm', element: clienteForm}
+  { path: '/clientes/clienteEditForm/:clientId', name: 'clienteForm', element: clienteForm},
+  { path: '/providers', name: 'Providers', exact: true},
+  { path: '/providers/provider', name: 'Provider', element: Provider},
+  { path: '/providers/providerForm', name: 'ProviderForm', element: ProviderForm},
+  { path: '/providers/providerEditForm/:providerId', name: 'ProviderEditForm', element: ProviderEditForm}
 ]
 
 export default routes
