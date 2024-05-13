@@ -5,7 +5,8 @@ import {
   cilSpeedometer,
   cilFastfood,
   cilNoteAdd,
-  cibAboutMe
+  cibAboutMe,
+  cilAddressBook
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -55,6 +56,19 @@ const _nav = [
         component: CNavItem,
         name: 'Factura',
         to: '/facturas/factura'
+      }
+    ]
+  },
+  {
+    component: CNavGroup,
+    name: 'Provider',
+    to: '/provider',
+    icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Provider',
+        to: '/providers/provider'
       }
     ]
   },
