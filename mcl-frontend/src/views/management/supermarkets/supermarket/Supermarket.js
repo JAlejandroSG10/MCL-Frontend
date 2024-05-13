@@ -29,11 +29,11 @@ const Supermarket = () => {
   },[]);
 
   function handleCreateSupermarkets (event){
-    navigate('/supermarkets/SupermarketForm');
+    navigate('/supermarkets/supermarketForm');
   }
 
   function handleEdit(supermarketId){
-    navigate(`/supermarkets/SupermarketEditForm/${supermarketId}`);
+    navigate(`/supermarkets/supermarketEditForm/${supermarketId}`);
   }
 
   const handleDisable = async(supermarketId) =>{
