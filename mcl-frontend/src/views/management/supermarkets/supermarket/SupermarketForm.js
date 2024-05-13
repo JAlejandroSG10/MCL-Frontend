@@ -60,7 +60,6 @@ const SupermarketForm = () => {
             cityId: event.target.value
         })
     }
- 
 
     function handleChange(event){
         const {name, value} = event.target;
