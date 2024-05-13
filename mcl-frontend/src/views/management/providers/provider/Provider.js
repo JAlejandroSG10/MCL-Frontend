@@ -38,7 +38,7 @@ const Provider = () => {
 
   const handleDisable = async(providerId) =>{
     try{
-      var url = "http://localhost:1337/api/deleteprovider/:providerId"+providerId;
+      var url = "http://localhost:1337/api/deleteprovider/"+providerId;
       const response = await Axios.put(url);
       window.location.reload();
     }
