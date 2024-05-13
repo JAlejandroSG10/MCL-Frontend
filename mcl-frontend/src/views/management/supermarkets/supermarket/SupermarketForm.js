@@ -26,7 +26,6 @@ const SupermarketForm = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('');
     const [cities, setCities] = useState([]);
     const [selectedCity, setSelectedCity] = useState('');
-   
 
     useEffect(() =>{
 

@@ -1,4 +1,3 @@
-import { element } from 'prop-types'
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -8,6 +7,8 @@ const SupermarketEditForm = React.lazy(() => import('./views/management/supermar
 const Factura = React.lazy(()=> import('./views/management/facturas/factura/Factura'))
 const FacturaForm = React.lazy(() => import('./views/management/facturas/factura/FacturaForm'))
 const FacturaEditForm = React.lazy(() => import('./views/management/facturas/factura/FacturaEditForm'))
+const cliente = React.lazy(()=> import('./views/management/clientes/cliente/Cliente'))
+const clienteForm = React.lazy(()=> import('./views/management/clientes/cliente/ClienteForm'))
 
 
 const routes = [
@@ -20,7 +21,11 @@ const routes = [
   { path: '/facturas', name: 'Facturas', exact: true},
   { path: '/facturas/factura', name: 'Factura', element: Factura},
   { path: '/facturas/facturaForm', name: 'FacturaForm', element: FacturaForm},
-  { path: '/facturas/facturaEditForm/:facturaId', name: 'FacturaEditForm', element: FacturaEditForm}
+  { path: '/facturas/facturaEditForm/:facturaId', name: 'FacturaEditForm', element: FacturaEditForm},
+  { path: '/clientes', name: 'clientes', exact: true},
+  { path: '/clientes/cliente', name: 'cliente', element: cliente},
+  { path: '/clientes/clienteForm', name: 'clienteForm', element: clienteForm},
+  { path: '/clientes/clienteEditForm/:clientId', name: 'clienteForm', element: clienteForm}
 ]
 
 export default routes
