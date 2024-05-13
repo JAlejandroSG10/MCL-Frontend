@@ -63,6 +63,18 @@ const Cliente = () => {
       dataIndex: 'clientLastName'
     },
     {
+      title: 'Phone',
+      dataIndex: 'clientPhone'
+    },
+    {
+      title: 'Email',
+      dataIndex: 'clientEmail'
+    },
+    {
+      title: 'Address',
+      dataIndex: 'clientAddress'
+    },
+    {
       title:'Options',
       render:(clientId) =>(
         <div>

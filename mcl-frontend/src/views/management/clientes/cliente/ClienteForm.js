@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import Axios from "axios";
 
 import {
@@ -34,7 +34,7 @@ const ClienteForm = () => {
                 const response = await Axios.put(`http://localhost:1337/api/updatecliente/${clientId}`, clientData);
                 console.log(response.data);
             }
-            navigate('/clientes/cliente');
+            navigate('/clientes/cliente')
         }
         catch (e){
             console.log(e);
@@ -77,11 +77,20 @@ const ClienteForm = () => {
                 <CFormInput type="number" id="clientId" name="clientId" label="Id" value={clientData.clientId} onChange={handleChange} readOnly/>
             </CCol>
         )}
-        <CCol md={12}>
+        <CCol md={6}>
             <CFormInput type="text"  id="clientFirstName" name = "clientFirstName" label="Fisrt Name" value={clientData.clientFirstName} onChange={handleChange} />
         </CCol>
-        <CCol md={4}>
+        <CCol md={6}>
             <CFormInput type="text"  id="clientLastName" name = "clientLastName" label="Last Name" value={clientData.clientLastName} onChange={handleChange} />
+        </CCol>
+        <CCol md={6}>
+            <CFormInput type="text"  id="clientPhone" name = "clientPhone" label="Phone" value={clientData.clientPhone} onChange={handleChange} />
+        </CCol>
+        <CCol md={6}>
+            <CFormInput type="text"  id="clientEmail" name = "clientEmail" label="Email" value={clientData.clientEmail} onChange={handleChange} />
+        </CCol>
+        <CCol md={4}>
+            <CFormInput type="text"  id="clientAddress" name = "clientAddress" label="Address" value={clientData.clientAddress} onChange={handleChange} />
         </CCol>
         <CCol xs={12}>
             <CButton color="primary" type="submit">Save</CButton>
